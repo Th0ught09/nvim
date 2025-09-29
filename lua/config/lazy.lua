@@ -44,29 +44,14 @@ require("toggleterm").setup({
   open_mapping = [[<c-\>]],
 })
 
+-- {{ Debuggers
 local dap = require("dap")
 dap.defaults.fallback.external_terminal = {
   command = "alacritty",
   args = { "--hold" },
 }
 
--- dap.adapters["local-lua"] = {
---   type = "executable",
---   command = "lua",
---   args = {
---     "/home/kirkm/Programs/debugger.lua/debugger.lua",
---   },
---   enrich_config = function(config, on_config)
---     if not config["extensionPath"] then
---       local c = vim.deepcopy(config)
---       c.extensionPath = "/home/kirkm/Programs/debugger.lua/"
---       on_config(c)
---     else
---       on_config(config)
---     end
---   end,
--- }
-dap.adapters["local-lua"] = {
+dap.adapters["local-lua"] = { -- can't remove brackets
   type = "executable",
   command = "node",
   args = {
@@ -120,6 +105,8 @@ dap.configurations.haskell = {
     ghciCmd = "stack ghci --test --no-load --no-build --main-is TARGET --ghci-options -fprint-evld-with-show",
   },
 }
+-- }}
+
 require("lualine").setup({
   options = {
     icons_enabled = true,
@@ -162,22 +149,7 @@ require("lualine").setup({
   extensions = {},
 })
 
--- require("mason-lspconfig").setup({
---   ensure_installed = {},
---   automatic_installation = false,
--- })
-
 require("lspconfig").clangd.setup({})
-
-require("neogen").setup({
-  languages = {
-    python = {
-      template = {
-        annotation_convention = "reST",
-      },
-    },
-  },
-})
 
 require("conform").setup({
   formatters_by_ft = {
@@ -192,6 +164,11 @@ require("conform").setup({
 })
 
 require("noice").setup({
+  views = {
+    split = {
+      enter = true,
+    },
+  },
   lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {

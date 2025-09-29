@@ -1,6 +1,16 @@
 return {
   "danymat/neogen",
-  config = true,
+  config = function()
+    require("neogen").setup({
+      languages = {
+        python = {
+          template = {
+            annotation_convention = "reST",
+          },
+        },
+      },
+    })
+  end,
   keys = {
     {
       "<leader>cg",
@@ -10,6 +20,4 @@ return {
       desc = "Generate function docstring",
     },
   },
-  -- Uncomment next line if you want to follow only stable versions
-  -- version = "*"
 }

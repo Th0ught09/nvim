@@ -1,6 +1,8 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+--
+-- {{ lua testing
 local api = vim.api
 local function find_test()
   local bufnr = api.nvim_get_current_buf()
@@ -70,4 +72,8 @@ vim.keymap.set("n", "<leader>dn", function()
       '--filter="' .. name .. '"',
     },
   })
+end)
+-- }}
+vim.keymap.set("n", "<leader>nl", function()
+  require("noice").cmp("history")
 end)
