@@ -75,5 +75,5 @@ vim.keymap.set("n", "<leader>dn", function()
 end)
 -- }}
 vim.keymap.set("n", "<leader>nl", function()
-  require("noice").cmp("history")
+  require("noice").cmd("history")
 end)
