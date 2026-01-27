@@ -51,7 +51,7 @@ dap.defaults.fallback.external_terminal = {
   args = { "--hold" },
 }
 
-dap.adapters["local-lua"] = { -- can't remove brackets
+dap.adapters["local-lua"] = {
   type = "executable",
   command = "node",
   args = {
