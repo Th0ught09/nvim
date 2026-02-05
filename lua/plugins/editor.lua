@@ -269,4 +269,5 @@ return {
       end
     end,
   },
+  { "simrat39/rust-tools.nvim" },
 }
